@@ -1,3 +1,5 @@
+/* Main dingen */
+
 html, body{
   margin: 0;
   padding: 0;
@@ -7,11 +9,14 @@ html, body{
 body{
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.7;
+  color: black;
   letter-spacing: 0.3px;
-  padding: 18px;
+  padding-top: 20px, 0px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
 html{
@@ -22,6 +27,15 @@ footer {
   margin-top: auto;
   display: flex;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  width: fit-content;
+  min-width: 160px;
+  max-width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 18px;
+  padding: 0 24px;
 }
 
 footer .footer {
@@ -30,4 +44,181 @@ footer .footer {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.backgroundimg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  .backgroundimg {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .backgroundimg {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+#scrollToTopBtn{
+  display:none;
+  position:fixed;
+  bottom:32px;
+  right:32px;
+  z-index:1000;
+  padding:10px 16px;
+  font-size:18px;
+  border-radius:50%;
+  border:none;
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  cursor:pointer;
+}
+
+
+
+/* ALLE NAV BAR */
+
+
+nav ul.navlinks{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+  display: flex;      
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.55);
+  padding: 2px 5px;
+}
+
+nav ul.navlinks li{ 
+  margin: 0; 
+}
+
+nav ul.navlinks li:first-child{
+  margin-right: auto;
+}
+
+nav ul.navlinks li a{
+  color: black;
+  text-decoration: none;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ALLE ANIMATIE */
+
+
+.navlinks a:hover,
+.navlinks a:focus,
+.dropdownp:hover,
+.dropdownp:focus{
+  transform: translateY(-2px);
+}
+.navlinks a,
+.dropdownp{
+  transition: transform 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.navlinks{
+  z-index: 50;
+  transform: translateY(-8px);
+  transition: opacity 220ms cubic-bezier(.2,.8,.2,1), transform 220ms cubic-bezier(.2,.8,.2,1);
+  will-change: opacity, transform;
+}
+
+.navlinks a{
+  display: block;
+  text-decoration: none;
+}
+
+
+
+/* ALLE DROPDOWN */
+
+
+
+ .dropdown{
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownp{
+  background: transparent;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+}
+
+.dropdown-content-all{
+  visibility: hidden;
+  text-align: center;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  border: none;
+  padding: 6px 5px;
+  z-index: 50;
+  opacity: 0;
+  transition: opacity 220ms cubic-bezier(.2,.8,.2,1), transform 220ms cubic-bezier(.2,.8,.2,1);
+  will-change: opacity, transform;
+  white-space: nowrap;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.03);
+}
+
+.dropdown-content-all a{
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.dropdown-content-all a:hover,
+.dropdown-content-all a:focus{
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.dropdown:hover .dropdown-content-all,
+.dropdownp:focus + .dropdown-content-all{
+  visibility: visible;
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown:hover .dropdownp::after,
+.dropdownpl:focus::after{
+  transform: rotate(180deg);
 }
