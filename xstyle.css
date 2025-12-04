@@ -6,6 +6,78 @@ html, body{
   height: 100%;
 }
 
+/* HEADER STYLING */
+
+.main-header {
+  backdrop-filter: blur(10px);
+  padding: 32px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 40;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.logo {
+  margin: 0;
+  font-size: 2.8em;
+  font-weight: 800;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  letter-spacing: -1px;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 1.1em;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    padding: 24px 16px;
+  }
+
+  .logo {
+    font-size: 2em;
+  }
+
+  .tagline {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-header {
+    padding: 20px 12px;
+  }
+
+  .logo {
+    font-size: 1.6em;
+  }
+
+  .tagline {
+    font-size: 0.85em;
+  }
+}
+
 body{
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.7;
@@ -120,7 +192,7 @@ footer .footer {
 
 .headline p {
   margin: 0;
-  color: #a5a5a5;
+  color: #ffffff;
   border-color: black;
   font-size: 1.1em;
   line-height: 1.6;
@@ -218,7 +290,7 @@ nav {
 nav ul.navlinks{
   list-style: none;
   padding: 0;
-  margin: 0 0 18px 0;
+  margin: 24px 0 18px 0;
   display: flex;      
   align-items: center;
   justify-content: flex-start;
