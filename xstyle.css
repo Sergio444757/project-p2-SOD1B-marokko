@@ -6,6 +6,33 @@ html, body{
   height: 100%;
 }
 
+.religie-tekst {
+  color: #222;
+  background: rgba(240, 240, 240, 0.788);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto 24px auto;
+  padding: 24px 20px;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-size: 1.15em;
+  line-height: 1.7;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .religie-tekst {
+    padding: 14px 8px;
+    font-size: 1em;
+    max-width: 98vw;
+  }
+}
+
 /* HEADER STYLING */
 
 .main-header {
@@ -296,7 +323,7 @@ nav ul.navlinks{
   justify-content: flex-start;
   gap: 12px;
   flex-wrap: wrap;
-  background: rgba(255,255,255,0.55);
+  background: rgba(255, 255, 255, 0.815);
   padding: 2px 5px;
   width: 100%;
 }
