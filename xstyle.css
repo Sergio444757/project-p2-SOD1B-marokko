@@ -444,3 +444,8 @@ nav ul.navlinks li a{
 .dropdownpl:focus::after{
   transform: rotate(180deg);
 }
+
+.diagram{
+  width: 350px;
+
+}
