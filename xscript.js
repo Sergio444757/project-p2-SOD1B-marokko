@@ -57,3 +57,43 @@ if (document.getElementById('footer-plaats')) {
 load_html_file('footer.html', 'footer-plaats');
 }
 });
+
+
+const form = document.getElementById('vrijwilligerForm');
+    const annuleerBtn = document.getElementById('annuleerBtn');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+
+      const naam = document.getElementById('naam').value.trim();
+      const telefoon = document.getElementById('telefoon').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const voorkeur = document.getElementById('voorkeur').value;
+      const motivatie = document.getElementById('motivatie').value.trim();
+
+      const dagenCheckboxes = document.querySelectorAll('input[name="dagen"]:checked');
+      const dagen = Array.from(dagenCheckboxes).map(cb => cb.value);
+
+
+      console.log({
+        naam,
+        telefoon,
+        email,
+        voorkeur,
+        dagen,
+        motivatie
+      });
+
+      alert('Bedankt voor je aanmelding als vrijwilliger!');
+      form.reset();
+    });
+
+    annuleerBtn.addEventListener('click', function () {
+      if (confirm('Weet je zeker dat je wilt annuleren?')) {
+        form.reset();
+      }
+    });
+
+
+    
