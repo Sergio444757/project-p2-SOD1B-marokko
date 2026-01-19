@@ -62,6 +62,68 @@ load_html_file('footer.html', 'footer-plaats');
 const form = document.getElementById('vrijwilligerForm');
     const annuleerBtn = document.getElementById('annuleerBtn');
 
+    // ======================================
+    // VOLUNTEER COUNTER FUNCTIONALITY
+    // ======================================
+
+    let volunteersNeeded = 20;
+    let volunteersCount = 0;
+
+    const messages = {
+      high: 'Nog {count} vrijwilligers nodig! Doe jij mee?',
+      medium: 'Nog {count} vrijwilligers nodig voor ons doel!',
+      low: 'Bijna daar! Nog {count} vrijwilligers nodig!',
+      almost: 'Nog slechts 1 vrijwilliger nodig!',
+      success: '🎉 Doel bereikt! Dank je wel!'
+    };
+
+    function updateCounterDisplay() {
+      const counterDisplay = document.getElementById('counterDisplay');
+      const messageElement = document.getElementById('volunteerMessage');
+      const counterContainer = document.querySelector('.volunteer-counter');
+      
+      const remaining = volunteersNeeded - volunteersCount;
+      
+      // Add animation class
+      counterDisplay.classList.remove('countdown');
+      counterDisplay.offsetHeight; // Trigger reflow for animation restart
+      counterDisplay.classList.add('countdown');
+      
+      // Update counter display
+      counterDisplay.textContent = remaining;
+      
+      // Update message based on count
+      let message = '';
+      if (remaining <= 0) {
+        message = messages.success;
+        counterContainer.classList.add('success');
+        counterContainer.classList.remove('warning');
+      } else if (remaining === 1) {
+        message = messages.almost;
+        counterContainer.classList.add('warning');
+        counterContainer.classList.remove('success');
+      } else if (remaining <= 3) {
+        message = messages.low;
+        counterContainer.classList.add('warning');
+        counterContainer.classList.remove('success');
+      } else if (remaining <= 8) {
+        message = messages.medium;
+        counterContainer.classList.remove('warning');
+        counterContainer.classList.remove('success');
+      } else {
+        message = messages.high;
+        counterContainer.classList.remove('warning');
+        counterContainer.classList.remove('success');
+      }
+      
+      messageElement.textContent = message;
+    }
+
+    // Initialize counter display
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCounterDisplay();
+    });
+
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
@@ -84,6 +146,10 @@ const form = document.getElementById('vrijwilligerForm');
         dagen,
         motivatie
       });
+
+      // Increment volunteer counter
+      volunteersCount++;
+      updateCounterDisplay();
 
       alert('Bedankt voor je aanmelding als vrijwilliger!');
       form.reset();
