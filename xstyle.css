@@ -489,3 +489,15 @@ nav ul.navlinks li a{
   flex-wrap: wrap;
   flex-direction: column;
 }
+
+.tabel-achtergrond{
+ width: 500px;
+ display: block;
+ margin: 20px auto 0 auto;
+ text-align: center;
+}
+
+.tabel-title{
+  text-align: center;
+  margin: 20px 0;
+}
