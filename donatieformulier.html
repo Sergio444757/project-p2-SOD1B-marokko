@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donatieformulier</title>
+    <link rel="stylesheet" href="xstyle.css">
+</head>
+<body>
+    <div id="header-plaats"></div>
+    <div id="menu-plaats"></div>
+    
+    <form id="vrijwilligerForm">
+    <h1>Meld je aan als een vrijwilliger</h1>
+
+    <label for="naam">Volledige naam *</label>
+    <input type="text" id="naam" name="naam" required>
+
+
+    <label for="telefoon">Telefoonnummer *</label>
+    <input type="text" id="telefoon" name="telefoon" required>
+
+
+    <label for="email">E‑mailadres *</label>
+    <input type="email" id="email" name="email" required>
+
+
+    <label for="voorkeur">Voorkeur vrijwilligerswerk *</label>
+    <select id="voorkeur" name="voorkeur" required>
+      <option value="">-- Kies een optie --</option>
+      <option value="nieuwe-game-bouwen">Nieuwe game bouwen</option>
+      <option value="geld-inzamelen">Geld inzamelen</option>
+      <option value="administratieve-taken">Administratieve taken doen</option>
+      <option value="social-media">Social media promotie</option>
+      <option value="evenement-organisatie">Helpen bij evenementen</option>
+      <option value="content-creatie">Content (tekst/video) maken</option>
+      <option value="technische-ondersteuning">Technische ondersteuning</option>
+    </select>
+
+
+    <label>Op welke dagen ben je beschikbaar?</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="dagen" value="maandag"> Maandag</label>
+      <label><input type="checkbox" name="dagen" value="dinsdag"> Dinsdag</label>
+      <label><input type="checkbox" name="dagen" value="woensdag"> Woensdag</label>
+      <label><input type="checkbox" name="dagen" value="donderdag"> Donderdag</label>
+      <label><input type="checkbox" name="dagen" value="vrijdag"> Vrijdag</label>
+      <label><input type="checkbox" name="dagen" value="zaterdag"> Zaterdag</label>
+      <label><input type="checkbox" name="dagen" value="zondag"> Zondag</label>
+    </div>
+
+
+    <label for="motivatie">Motivatie om als vrijwilliger te werken</label>
+    <textarea id="motivatie" name="motivatie" rows="5"></textarea>
+
+
+    <div style="margin-top: 12px;">
+      <button type="submit">Verzenden</button>
+      <button type="button" id="annuleerBtn">Annuleren</button>
+    </div>
+  </form>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <img src="imgs/_128b5db1-960e-4f53-acd1-be94a7cac295.jpg" class="backgroundimg" loading="eager">
+
+
+    <button id="scrollToTopBtn">↑</button>
+    <script src="xscript.js"></script>
+    <script>
+      
+    </script>
+    <div id="footer-plaats"></div>
+</body>
+</html>
