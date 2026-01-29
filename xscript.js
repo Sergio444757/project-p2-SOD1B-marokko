@@ -62,9 +62,7 @@ load_html_file('footer.html', 'footer-plaats');
 const form = document.getElementById('vrijwilligerForm');
     const annuleerBtn = document.getElementById('annuleerBtn');
 
-    // ======================================
-    // VOLUNTEER COUNTER FUNCTIONALITY
-    // ======================================
+
 
     let volunteersNeeded = 20;
     let volunteersCount = 0;
@@ -84,15 +82,15 @@ const form = document.getElementById('vrijwilligerForm');
       
       const remaining = volunteersNeeded - volunteersCount;
       
-      // Add animation class
+      
       counterDisplay.classList.remove('countdown');
-      counterDisplay.offsetHeight; // Trigger reflow for animation restart
+      counterDisplay.offsetHeight; 
       counterDisplay.classList.add('countdown');
       
-      // Update counter display
+      
       counterDisplay.textContent = remaining;
       
-      // Update message based on count
+     
       let message = '';
       if (remaining <= 0) {
         message = messages.success;
@@ -119,7 +117,6 @@ const form = document.getElementById('vrijwilligerForm');
       messageElement.textContent = message;
     }
 
-    // Initialize counter display
     document.addEventListener('DOMContentLoaded', function() {
       updateCounterDisplay();
     });
