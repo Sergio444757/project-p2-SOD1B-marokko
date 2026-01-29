@@ -470,3 +470,22 @@ nav ul.navlinks li a{
   flex-wrap: wrap;
   flex-direction: column;
 }
+
+.Doel{
+  color: #222;
+  background: rgba(240, 240, 240, 0.788);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto 24px auto;
+  padding: 24px 20px;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-size: 1.15em;
+  line-height: 1.7;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
