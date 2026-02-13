@@ -1,15 +1,4 @@
-// Scroll to Top knop functionaliteit
-const scrollBtn = document.getElementById('scrollToTopBtn');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 200) {
-          scrollBtn.style.display = 'block';
-        } else {
-          scrollBtn.style.display = 'none';
-        }
-      });
-      scrollBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+// Scroll to Top knop functionaliteit will be initialized in DOMContentLoaded
 
 
 // script.js - module om html bestanden in te laden
@@ -59,71 +48,130 @@ load_html_file('footer.html', 'footer-plaats');
 });
 
 
-const form = document.getElementById('vrijwilligerForm');
-    const annuleerBtn = document.getElementById('annuleerBtn');
+let volunteersNeeded = 20;
+let volunteersCount = 0;
+
+const messages = {
+  high: 'Nog {count} vrijwilligers nodig! Doe jij mee?',
+  medium: 'Nog {count} vrijwilligers nodig voor ons doel!',
+  low: 'Bijna daar! Nog {count} vrijwilligers nodig!',
+  almost: 'Nog slechts 1 vrijwilliger nodig!',
+  success: '🎉 Doel bereikt! Dank je wel!'
+};
+
+function updateCounterDisplay() {
+  const counterDisplay = document.getElementById('counterDisplay');
+  const messageElement = document.getElementById('volunteerMessage');
+  const counterContainer = document.querySelector('.volunteer-counter');
+  
+  const remaining = volunteersNeeded - volunteersCount;
+  
+  
+  counterDisplay.classList.remove('countdown');
+  counterDisplay.offsetHeight; 
+  counterDisplay.classList.add('countdown');
+  
+  
+  counterDisplay.textContent = remaining;
+  
+ 
+  let message = '';
+  if (remaining <= 0) {
+    message = messages.success;
+    counterContainer.classList.add('success');
+    counterContainer.classList.remove('warning');
+  } else if (remaining === 1) {
+    message = messages.almost;
+    counterContainer.classList.add('warning');
+    counterContainer.classList.remove('success');
+  } else if (remaining <= 3) {
+    message = messages.low;
+    counterContainer.classList.add('warning');
+    counterContainer.classList.remove('success');
+  } else if (remaining <= 8) {
+    message = messages.medium;
+    counterContainer.classList.remove('warning');
+    counterContainer.classList.remove('success');
+  } else {
+    message = messages.high;
+    counterContainer.classList.remove('warning');
+    counterContainer.classList.remove('success');
+  }
+  
+  messageElement.textContent = message;
+}
 
 
 
-    let volunteersNeeded = 20;
-    let volunteersCount = 0;
+let isDark = false;
 
-    const messages = {
-      high: 'Nog {count} vrijwilligers nodig! Doe jij mee?',
-      medium: 'Nog {count} vrijwilligers nodig voor ons doel!',
-      low: 'Bijna daar! Nog {count} vrijwilligers nodig!',
-      almost: 'Nog slechts 1 vrijwilliger nodig!',
-      success: '🎉 Doel bereikt! Dank je wel!'
-    };
+function toggleDarkLight() {
+  const body = document.body;
+  const lightImg = document.getElementById("backgroundIMG1");
+  const darkImg = document.getElementById("backgroundIMG2");
+  const toggle = document.getElementById("darkLightToggle");
+  
+  if (!isDark) {
+    // Switch to dark mode
+    body.classList.add("dark-mode");
+    lightImg.style.display = "none";
+    darkImg.style.display = "block";
+    toggle.textContent = "☀️";
+    isDark = true;
+  } else {
+    // Switch to light mode
+    body.classList.remove("dark-mode");
+    lightImg.style.display = "block";
+    darkImg.style.display = "none";
+    toggle.textContent = "🌙";
+    isDark = false;
+  }
+}
 
-    function updateCounterDisplay() {
-      const counterDisplay = document.getElementById('counterDisplay');
-      const messageElement = document.getElementById('volunteerMessage');
-      const counterContainer = document.querySelector('.volunteer-counter');
-      
-      const remaining = volunteersNeeded - volunteersCount;
-      
-      
-      counterDisplay.classList.remove('countdown');
-      counterDisplay.offsetHeight; 
-      counterDisplay.classList.add('countdown');
-      
-      
-      counterDisplay.textContent = remaining;
-      
-     
-      let message = '';
-      if (remaining <= 0) {
-        message = messages.success;
-        counterContainer.classList.add('success');
-        counterContainer.classList.remove('warning');
-      } else if (remaining === 1) {
-        message = messages.almost;
-        counterContainer.classList.add('warning');
-        counterContainer.classList.remove('success');
-      } else if (remaining <= 3) {
-        message = messages.low;
-        counterContainer.classList.add('warning');
-        counterContainer.classList.remove('success');
-      } else if (remaining <= 8) {
-        message = messages.medium;
-        counterContainer.classList.remove('warning');
-        counterContainer.classList.remove('success');
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize scroll to top button
+  const scrollBtn = document.getElementById('scrollToTopBtn');
+  if (scrollBtn) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 200) {
+        scrollBtn.style.display = 'block';
       } else {
-        message = messages.high;
-        counterContainer.classList.remove('warning');
-        counterContainer.classList.remove('success');
+        scrollBtn.style.display = 'none';
       }
-      
-      messageElement.textContent = message;
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      updateCounterDisplay();
     });
-
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  
+  // Initialize counter
+  const counterDisplay = document.getElementById('counterDisplay');
+  if (counterDisplay) {
+    updateCounterDisplay();
+  }
+  
+  // Initialize dark/light toggle
+  const toggle = document.getElementById("darkLightToggle");
+  if (toggle) {
+    toggle.addEventListener("click", toggleDarkLight);
+  }
+  
+  // Initialize form if it exists
+  const form = document.getElementById('vrijwilligerForm');
+  const annuleerBtn = document.getElementById('annuleerBtn');
+  
+  if (form) {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-
 
       const naam = document.getElementById('naam').value.trim();
       const telefoon = document.getElementById('telefoon').value.trim();
@@ -133,7 +181,6 @@ const form = document.getElementById('vrijwilligerForm');
 
       const dagenCheckboxes = document.querySelectorAll('input[name="dagen"]:checked');
       const dagen = Array.from(dagenCheckboxes).map(cb => cb.value);
-
 
       console.log({
         naam,
@@ -151,12 +198,13 @@ const form = document.getElementById('vrijwilligerForm');
       alert('Bedankt voor je aanmelding als vrijwilliger!');
       form.reset();
     });
-
+  }
+  
+  if (annuleerBtn) {
     annuleerBtn.addEventListener('click', function () {
       if (confirm('Weet je zeker dat je wilt annuleren?')) {
         form.reset();
       }
     });
-
-
-    
+  }
+});
